@@ -174,7 +174,7 @@ window.CATALOGO = [
     "genero": "Feminino",
     "ocasiao": "Dia a dia, encontros e ocasiões especiais",
     "descricao": "O Fakhar Rose apresenta uma composição feminina floral, delicada e elegante, combinando flores brancas com notas frutadas e uma base levemente adocicada.",
-    "imagem": "lattafa-fakhar-rose-edp.jpeg"
+    "imagem": "fotos-recebidas/lattafa-fakhar-rose-edp.jpeg",
   },
   {
     "id": "fakhar-platin",
