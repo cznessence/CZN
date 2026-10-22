@@ -606,6 +606,220 @@ body.saindo {
     opacity: 0;
     transition: opacity 0.35s ease;
 }
+
+/* ==============================
+   PÁGINA DE DETALHES DO PRODUTO
+============================== */
+
+.detalhes-produto {
+    width: min(1180px, 90%);
+    margin: 50px auto 90px;
+}
+
+.voltar {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    color: #8c6929;
+    text-decoration: none;
+
+    font-size: 13px;
+    letter-spacing: 1px;
+
+    margin-bottom: 35px;
+
+    transition: .3s;
+}
+
+.voltar:hover {
+    color: #b08a3c;
+    transform: translateX(-4px);
+}
+
+
+/* ÁREA DO PRODUTO */
+
+.produto-detalhes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 70px;
+
+    align-items: center;
+}
+
+
+/* IMAGEM */
+
+.produto-imagem {
+    height: 600px;
+
+    background: #faf8f2;
+
+    border: 1px solid #e3d7bd;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    overflow: hidden;
+}
+
+.produto-imagem img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    transition: .4s;
+}
+
+.produto-imagem:hover img {
+    transform: scale(1.04);
+}
+
+
+/* INFORMAÇÕES */
+
+.produto-informacoes {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.produto-informacoes .categoria {
+    margin-bottom: 12px;
+}
+
+.produto-informacoes h1 {
+    color: #40372e;
+
+    font-size: clamp(36px, 4vw, 52px);
+
+    font-weight: normal;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 25px;
+}
+
+.descricao {
+    color: #62584e;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+
+    margin-bottom: 30px;
+}
+
+
+/* INFORMAÇÕES INDIVIDUAIS */
+
+.informacao {
+    width: 100%;
+
+    border-top: 1px solid #e3d7bd;
+
+    padding: 18px 0;
+}
+
+.informacao h3 {
+    color: #9a742d;
+
+    font-size: 14px;
+
+    font-weight: normal;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 8px;
+}
+
+.informacao h3 i {
+    margin-right: 8px;
+}
+
+.informacao p {
+    color: #62584e;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+/* BOTÃO WHATSAPP */
+
+.botao-produto {
+    margin-top: 25px;
+
+    padding: 14px 28px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+.botao-produto i {
+    font-size: 18px;
+}
+
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 850px) {
+
+    .produto-detalhes {
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+    }
+
+    .produto-imagem {
+        height: 500px;
+    }
+
+    .produto-informacoes h1 {
+        font-size: 38px;
+    }
+
+}
+
+
+@media (max-width: 560px) {
+
+    .detalhes-produto {
+        width: 88%;
+        margin-top: 30px;
+    }
+
+    .produto-imagem {
+        height: 380px;
+
+        padding: 20px;
+    }
+
+    .produto-informacoes h1 {
+        font-size: 32px;
+    }
+
+    .descricao {
+        font-size: 14px;
+    }
+
+    .botao-produto {
+        width: 100%;
+
+        justify-content: center;
+    }
+
+}
 /* ==============================
    PÁGINA SOBRE NÓS
 ============================== */
@@ -759,3 +973,118 @@ body.saindo {
     }
 
 }
+.cabecalho {
+  position: sticky; top: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 24px; padding: 14px 5%; background: #fffdf9;
+  border-bottom: 1px solid #e8dcc4;
+}
+.cabecalho .logo img { display: block; max-height: 58px; max-width: 180px; object-fit: contain; }
+.cabecalho nav { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+.cabecalho nav a { color: #51483e; text-decoration: none; font-family: Georgia, "Times New Roman", serif; }
+.cabecalho nav a:hover, .cabecalho nav a.ativo { color: #9a742d; }
+.titulo-pagina { text-align: center; padding: 48px 20px 24px; color: #51483e; }
+.titulo-pagina h1 { margin: 8px 0; color: #3d352d; font-family: Georgia, "Times New Roman", serif; }
+.filtros { width: min(1180px, 90%); margin: 0 auto 28px; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+#pesquisa { box-sizing: border-box; width: 100%; max-width: 620px; padding: 14px 18px; border: 1px solid #d8c59b; background: #fff; color: #3d352d; font-family: Georgia, "Times New Roman", serif; font-size: 15px; outline: none; }
+#pesquisa:focus, .opcoes select:focus { border-color: #b08a3c; }
+.opcoes { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 12px; }
+.opcoes select, #limparFiltros { padding: 12px 16px; border: 1px solid #d8c59b; background: #fff; color: #51483e; font-family: Georgia, "Times New Roman", serif; font-size: 14px; }
+#limparFiltros { border-color: #b08a3c; color: #8c6929; cursor: pointer; }
+#limparFiltros:hover { background: #b08a3c; color: #fff; }
+.contador-produtos { width: 90%; max-width: 1180px; margin: 0 auto 16px; color: #756b60; font-size: 14px; }
+.produtos { width: min(1180px, 90%); margin: 0 auto 60px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+.card { min-width: 0; border: 1px solid #eadfcd; background: #fff; overflow: hidden; }
+.card.escondido { display: none !important; }
+.card .foto { height: 260px; display: flex; align-items: center; justify-content: center; background: #f8f4ec; overflow: hidden; }
+.card .foto img { width: 100%; height: 100%; object-fit: contain; }
+.card .info { padding: 18px; }
+.card .categoria, .produto-informacoes .categoria { color: #9a742d; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; }
+.card h2 { color: #3d352d; font-family: Georgia, "Times New Roman", serif; font-size: 18px; line-height: 1.35; }
+.volume-produto { color: #756b60; font-size: 13px; }
+.card .botao, .botao-produto { display: inline-block; margin-top: 12px; padding: 12px 15px; border: 1px solid #b08a3c; color: #8c6929; text-decoration: none; font-size: 12px; letter-spacing: .7px; }
+.card .botao:hover, .botao-produto:hover { background: #b08a3c; color: white; }
+#nenhumProduto { display: none; text-align: center; margin: 35px auto 70px; color: #756b60; }
+.imagem-indisponivel { width: 100%; min-height: 220px; display: flex; align-items: center; justify-content: center; color: #9a8d7b; background: #f8f4ec; font-family: Georgia, "Times New Roman", serif; }
+.detalhes-produto { width: min(1100px, 90%); margin: 35px auto 70px; }
+.voltar { display: inline-block; margin-bottom: 24px; color: #8c6929; text-decoration: none; }
+.produto-detalhes { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 42px; align-items: start; }
+.produto-imagem { min-height: 420px; display: flex; align-items: center; justify-content: center; background: #f8f4ec; }
+.produto-imagem img { width: 100%; max-height: 560px; object-fit: contain; }
+.produto-informacoes h1 { color: #3d352d; font-family: Georgia, "Times New Roman", serif; }
+.produto-informacoes > p:not(.categoria) { color: #51483e; line-height: 1.8; }
+.informacao { padding: 12px 0; border-bottom: 1px solid #eadfcd; color: #51483e; line-height: 1.5; }
+.rodape { padding: 26px 5%; text-align: center; color: #756b60; border-top: 1px solid #e8dcc4; }
+.whatsapp { position: fixed; right: 22px; bottom: 22px; z-index: 999; width: 54px; height: 54px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: #25d366; color: white; font-size: 28px; text-decoration: none; box-shadow: 0 4px 14px #0002; }
+body { opacity: 0; animation: cznAparecer .4s ease forwards; }
+body.saindo { opacity: 0; transition: opacity .25s ease; }
+@keyframes cznAparecer { to { opacity: 1; } }
+@media (max-width: 900px) { .produtos { grid-template-columns: repeat(3, minmax(0, 1fr)); } .produto-detalhes { gap: 25px; } }
+@media (max-width: 650px) {
+  .cabecalho { flex-direction: column; padding: 12px 5%; }
+  .cabecalho nav { justify-content: center; gap: 14px; }
+  .produtos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; width: 92%; }
+  .card .foto { height: 190px; }
+  .card .info { padding: 12px; }
+  .card h2 { font-size: 15px; }
+  .opcoes { width: 100%; flex-direction: column; }
+  .opcoes select, #limparFiltros { width: 100%; box-sizing: border-box; }
+  .produto-detalhes { grid-template-columns: 1fr; }
+  .produto-imagem { min-height: 300px; }
+}
+
+/* BOTÃO VOLTAR PARA OS PERFUMES */
+
+.voltar-produtos {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    margin-top: 20px;
+    padding: 12px 22px;
+
+    background: #fffdf9;
+    color: #9a742d;
+
+    border: 1px solid #b08a3c;
+    border-radius: 30px;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+
+    transition: all 0.3s ease;
+}
+
+.voltar-produtos i {
+    transition: transform 0.3s ease;
+}
+
+.voltar-produtos:hover {
+    background: #b08a3c;
+    color: #ffffff;
+    box-shadow: 0 5px 15px rgba(176, 138, 60, 0.20);
+    transform: translateY(-2px);
+}
+
+.voltar-produtos:hover i {
+    transform: translateX(-4px);
+}
+
+
+
+/* Galeria/carrossel de fotos da CZN ESSENCE */
+.galeria-produto { min-width: 0; }
+.carrossel-fotos { position: relative; display: flex; align-items: center; justify-content: center; min-height: 320px; overflow: hidden; border-radius: 14px; background: #fffdf9; }
+.carrossel-fotos img { width: 100%; height: 420px; object-fit: contain; display: block; }
+.seta-carrossel { position: absolute; z-index: 2; top: 50%; transform: translateY(-50%); border: 1px solid #b08a3c; background: rgba(255,253,249,.92); color: #8c6826; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; font-size: 20px; box-shadow: 0 2px 8px #00000012; }
+.seta-carrossel:hover { background: #b08a3c; color: white; }
+.seta-carrossel.anterior { left: 10px; } .seta-carrossel.proxima { right: 10px; }
+.indicadores-carrossel { display:flex; justify-content:center; align-items:center; gap:8px; margin-top:12px; }
+.indicador-foto { width:9px; height:9px; border:0; padding:0; border-radius:50%; background:#d8c9a9; cursor:pointer; }
+.indicador-foto.ativo { background:#9a742d; transform:scale(1.2); }
+.legenda-foto { text-align:center; color:#8c6826; font-size:.9rem; margin:8px 0 0; }
+@media(max-width:650px) { .carrossel-fotos { min-height:260px; } .carrossel-fotos img { height:300px; } .seta-carrossel { width:34px;height:34px; } }
