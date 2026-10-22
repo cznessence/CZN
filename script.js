@@ -1,160 +1,115 @@
 document.addEventListener("DOMContentLoaded", function () {
+  const lista = document.getElementById("listaProdutos");
+  const pesquisa = document.getElementById("pesquisa");
+  const genero = document.getElementById("genero");
+  const marca = document.getElementById("marca");
+  const limpar = document.getElementById("limparFiltros");
+  const nenhum = document.getElementById("nenhumProduto");
+  const contador = document.getElementById("contadorProdutos");
+  const catalogo = Array.isArray(window.CATALOGO) ? window.CATALOGO : [];
 
-    // ==============================
-    // PESQUISA E FILTROS
-    // ==============================
+  if (!lista || !pesquisa || !genero || !marca || !limpar || !nenhum || !contador) {
+    return;
+  }
 
-    const pesquisa = document.getElementById("pesquisa");
-    const tipo = document.getElementById("tipo");
-    const genero = document.getElementById("genero");
-    const limparFiltros = document.getElementById("limparFiltros");
-    const nenhumProduto = document.getElementById("nenhumProduto");
+  const marcas = [...new Set(catalogo.map(p => p.marca).filter(Boolean))].sort((a, b) => a.localeCompare(b, "pt-BR"));
+  marcas.forEach(function (nomeMarca) {
+    const option = document.createElement("option");
+    option.value = nomeMarca.toLocaleLowerCase("pt-BR");
+    option.textContent = nomeMarca;
+    marca.appendChild(option);
+  });
 
-    const produtos = document.querySelectorAll(".card");
+  function criarCard(produto) {
+    const card = document.createElement("article");
+    card.className = "card";
+    card.dataset.nome = produto.nome;
+    card.dataset.genero = produto.genero;
+    card.dataset.marca = produto.marca;
 
+    const foto = document.createElement("div");
+    foto.className = "foto";
+    const img = document.createElement("img");
+    img.src = produto.imagem;
+    img.alt = produto.nome;
+    img.loading = "lazy";
+    img.onerror = function () {
+      img.hidden = true;
+      const placeholder = document.createElement("div");
+      placeholder.className = "imagem-indisponivel";
+      placeholder.textContent = "Foto em breve";
+      foto.appendChild(placeholder);
+    };
+    foto.appendChild(img);
 
-    function filtrarProdutos() {
+    const info = document.createElement("div");
+    info.className = "info";
+    const categoria = document.createElement("div");
+    categoria.className = "categoria";
+    categoria.textContent = produto.marca;
+    const titulo = document.createElement("h2");
+    titulo.textContent = produto.nome;
+    const volume = document.createElement("p");
+    volume.className = "volume-produto";
+    volume.textContent = produto.volume;
+    const botao = document.createElement("a");
+    botao.className = "botao";
+    botao.href = "produto.html?produto=" + encodeURIComponent(produto.id);
+    botao.textContent = "VER DETALHES";
 
-        const texto = pesquisa.value.toLowerCase().trim();
-        const tipoSelecionado = tipo.value;
-        const generoSelecionado = genero.value;
+    info.append(categoria, titulo, volume, botao);
+    card.append(foto, info);
+    return card;
+  }
 
-        let quantidadeEncontrada = 0;
+  catalogo.forEach(produto => lista.appendChild(criarCard(produto)));
 
+  function filtrarProdutos() {
+    const termo = pesquisa.value.trim().toLocaleLowerCase("pt-BR");
+    const generoSelecionado = genero.value;
+    const marcaSelecionada = marca.value;
+    let encontrados = 0;
 
-        produtos.forEach(function (produto) {
-
-            const nome = produto.dataset.nome.toLowerCase();
-            const tipoProduto = produto.dataset.tipo.toLowerCase();
-            const generoProduto = produto.dataset.genero.toLowerCase();
-
-            const categoria = produto
-                .querySelector(".categoria")
-                .textContent
-                .toLowerCase();
-
-
-            // Pesquisa pelo nome ou categoria
-            const correspondePesquisa =
-                nome.includes(texto) ||
-                categoria.includes(texto) ||
-                tipoProduto.includes(texto) ||
-                generoProduto.includes(texto);
-
-
-            // Filtro por categoria
-            const correspondeTipo =
-                tipoSelecionado === "todos" ||
-                tipoProduto === tipoSelecionado;
-
-
-            // Filtro por gênero
-            const correspondeGenero =
-                generoSelecionado === "todos" ||
-                generoProduto === generoSelecionado;
-
-
-            // Verifica se o produto deve aparecer
-            if (
-                correspondePesquisa &&
-                correspondeTipo &&
-                correspondeGenero
-            ) {
-
-                produto.classList.remove("escondido");
-
-                quantidadeEncontrada++;
-
-            } else {
-
-                produto.classList.add("escondido");
-
-            }
-
-        });
-
-
-        // Mostra mensagem se nenhum produto for encontrado
-        if (quantidadeEncontrada === 0) {
-
-            nenhumProduto.style.display = "block";
-
-        } else {
-
-            nenhumProduto.style.display = "none";
-
-        }
-
-    }
-
-
-    // Pesquisa
-    pesquisa.addEventListener("input", filtrarProdutos);
-
-
-    // Filtro de categoria
-    tipo.addEventListener("change", filtrarProdutos);
-
-
-    // Filtro de gênero
-    genero.addEventListener("change", filtrarProdutos);
-
-
-    // Limpar filtros
-    limparFiltros.addEventListener("click", function () {
-
-        pesquisa.value = "";
-
-        tipo.value = "todos";
-
-        genero.value = "todos";
-
-        filtrarProdutos();
-
+    [...lista.children].forEach(function (card) {
+      const nome = (card.dataset.nome || "").toLocaleLowerCase("pt-BR");
+      const marcaTexto = (card.dataset.marca || "").toLocaleLowerCase("pt-BR");
+      const generoTexto = (card.dataset.genero || "").toLocaleLowerCase("pt-BR");
+      const correspondeTexto = nome.includes(termo) || marcaTexto.includes(termo);
+      const correspondeGenero = generoSelecionado === "todos" || generoTexto === generoSelecionado;
+      const correspondeMarca = marcaSelecionada === "todas" || marcaTexto === marcaSelecionada;
+      const mostrar = correspondeTexto && correspondeGenero && correspondeMarca;
+      card.classList.toggle("escondido", !mostrar);
+      if (mostrar) encontrados++;
     });
 
+    nenhum.style.display = encontrados === 0 ? "block" : "none";
+    contador.textContent = encontrados + (encontrados === 1 ? " perfume encontrado" : " perfumes encontrados");
+  }
 
-    // Executa quando a página carrega
+  pesquisa.addEventListener("input", filtrarProdutos);
+  genero.addEventListener("change", filtrarProdutos);
+  marca.addEventListener("change", filtrarProdutos);
+  limpar.addEventListener("click", function () {
+    pesquisa.value = "";
+    genero.value = "todos";
+    marca.value = "todas";
     filtrarProdutos();
+  });
+  filtrarProdutos();
 
-
-    // ==============================
-    // TRANSIÇÃO ENTRE PÁGINAS
-    // ==============================
-
-    const links = document.querySelectorAll("a");
-
-
-    links.forEach(function (link) {
-
-        link.addEventListener("click", function (evento) {
-
-            const destino = link.getAttribute("href");
-
-
-            // Ignora links externos,
-            // links internos e links que abrem nova aba
-            if (
-                !destino ||
-                destino.startsWith("http") ||
-                destino.startsWith("#") ||
-                link.target === "_blank"
-            ) {
-
-                return;
-
-            }
-
-
-            evento.preventDefault();
-
-
-            // Inicia o efeito de saída
-            document.body.classList.add("saindo");
-
-
-            // Troca de página depois da animação
-            setTimeout(function () {
+  document.querySelectorAll('a[href]').forEach(function (link) {
+    link.addEventListener("click", function (evento) {
+      const destino = link.getAttribute("href");
+      if (!destino || destino.startsWith("http") || destino.startsWith("#") ||
+          link.target === "_blank" || evento.ctrlKey || evento.metaKey || evento.shiftKey) return;
+      if (destino.endsWith(".html") || destino.includes(".html?")) {
+        evento.preventDefault();
+        document.body.classList.add("saindo");
+        window.setTimeout(() => { window.location.href = destino; }, 250);
+      }
+    });
+  });
+});
 
                 window.location.href = destino;
 
