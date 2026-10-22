@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Detalhes do Perfume | CZN ESSENCE</title>
+
+    <link rel="stylesheet" href="CSS/CSS.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO PADRÃO -->
+    <header>
+        <div class="marca">
+            CZN
+            <span>ESSENCE</span>
+        </div>
+
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="produtos.html" class="ativo">Produtos</a>
+            <a href="sobre.html">Sobre</a>
+            <a href="contato.html">Contato</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- TÍTULO -->
+        <section class="titulo">
+            <div class="linha"></div>
+
+            <h1 id="nomeProduto">CARREGANDO PERFUME...</h1>
+
+            <p class="subtitulo">
+                Descubra os detalhes da sua próxima essência.
+            </p>
+        </section>
+
+        <!-- DETALHES DO PERFUME -->
+        <section class="detalhes-produto">
+
+            <div class="imagem-detalhe galeria-produto">
+                <div class="carrossel-fotos" id="carrosselFotos">
+                    <button type="button" class="seta-carrossel anterior" id="fotoAnterior" aria-label="Foto anterior">&#10094;</button>
+                    <img id="imagemProduto" src="" alt="Imagem do perfume" hidden>
+                    <div id="imagemIndisponivel" class="sem-foto">IMAGEM EM BREVE</div>
+                    <button type="button" class="seta-carrossel proxima" id="fotoProxima" aria-label="Próxima foto">&#10095;</button>
+                </div>
+                <div class="indicadores-carrossel" id="indicadoresFotos" aria-label="Selecionar foto"></div>
+                <p class="legenda-foto" id="legendaFoto">Foto do perfume</p>
+            </div>
+
+            <div class="informacoes-produto">
+
+                <p class="categoria" id="categoriaProduto">
+                    CZN ESSENCE
+                </p>
+
+                <h2 id="tituloDetalhe">Detalhes do produto</h2>
+
+                <p id="descricaoProduto">
+                    Carregando descrição...
+                </p>
+
+                <div class="dados-produto">
+
+                    <p>
+                        <strong>Marca:</strong>
+                        <span id="marcaProduto"></span>
+                    </p>
+
+                    <p>
+                        <strong>Concentração:</strong>
+                        <span id="concentracaoProduto"></span>
+                    </p>
+
+                    <p>
+                        <strong>Volume:</strong>
+                        <span id="volumeProduto"></span>
+                    </p>
+
+                    <p>
+                        <strong>Gênero:</strong>
+                        <span id="generoProduto"></span>
+                    </p>
+
+                    <p>
+                        <strong>Ocasiões:</strong>
+                        <span id="ocasiaoProduto"></span>
+                    </p>
+
+                </div>
+
+                <a
+                    id="whatsappProduto"
+                    class="botao"
+                    href="https://wa.me/551999710375"
+                    target="_blank"
+                    rel="noopener">
+
+                    <i class="fa-brands fa-whatsapp"></i>
+                    CONSULTAR PELO WHATSAPP
+
+                </a>
+
+                <p>
+                    <a class="voltar-produtos" href="produtos.html">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    Voltar para os perfumes
+                    </a>
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ PADRÃO -->
+    <footer>
+        © 2026 CZN ESSENCE — Essência que marca. Presença que fica.
+    </footer>
+
+    <!-- WHATSAPP FIXO -->
+    <a
+        href="https://wa.me/551999710375"
+        class="whatsapp"
+        target="_blank"
+        rel="noopener"
+        aria-label="Falar com a CZN ESSENCE pelo WhatsApp">
+
+        <i class="fa-brands fa-whatsapp"></i>
+
+    </a>
+
+    <!-- CARREGAMENTO DOS DADOS -->
+    <script src="catalogo.js"></script>
+    <script src="produto.js"></script>
+
+</body>
+</html>
+```
