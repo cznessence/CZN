@@ -206,14 +206,14 @@ window.CATALOGO = [
     "genero": "Masculino",
     "ocasiao": "Dia a dia e momentos casuais",
     "descricao": "O Rayhaan Azul traz um perfil fresco, aromático e moderno, ideal para quem procura uma fragrância versátil para o cotidiano.",
-    "imagem": "fotos-recebidas/rayhaan-provavel-perfume-turquesa-caixa-frasco.jpeg",
+    "imagem": "fotos-recebidas/rayhaan-provavel-perfume-azul-caixa.jpeg",
     "imagens": [
       {
-        "src": "fotos-recebidas/rayhaan-provavel-perfume-turquesa-ornamentado.jpeg",
+        "src": "fotos-recebidas/rayhaan-provavel-perfume-azul-caixa.jpeg",
         "legenda": "Foto do perfume (identificação provável)"
       },
       {
-        "src": "fotos-recebidas/rayhaan-provavel-perfume-turquesa-caixa-frasco.jpeg",
+        "src": "fotos-recebidas/rayhaan-provavel-perfume-turquesa-frasco.jpeg",
         "legenda": "Foto do perfume (identificação provável)"
       }
     ]
@@ -311,7 +311,17 @@ window.CATALOGO = [
     "genero": "Unissex",
     "ocasiao": "Dia a dia e dias quentes",
     "descricao": "O Rayhaan Aquatica aposta em um perfil fresco e aquático, ideal para transmitir sensação de limpeza e leveza.",
-    "imagem": "rayhaan-aquatica-edp.jpeg"
+        "imagem": "fotos-recebidas/rayhaan-provavel-perfume-turquesa-caixa-frasco.jpeg",
+    "imagens": [
+      {
+        "src": "fotos-recebidas/rayhaan-provavel-perfume-turquesa-ornamentado.jpeg",
+        "legenda": "Foto do perfume (identificação provável)"
+      },
+      {
+        "src": "fotos-recebidas/rayhaan-provavel-perfume-turquesa-caixa-frasco.jpeg",
+        "legenda": "Foto do perfume (identificação provável)"
+      }
+    ]
   },
   {
     "id": "rayhaan-elixir-edp",
